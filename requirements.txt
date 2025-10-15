@@ -1,8 +1,9 @@
+
 Flask==3.0.3
 Flask-Cors==4.0.1
 Werkzeug==3.0.3
 pdfminer.six==20240706
 python-docx==1.1.2
 requests==2.32.3
-gunicorn==21.2.0
+gunicorn==23.0.0
 python-dotenv==1.0.1
