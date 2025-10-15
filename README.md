@@ -3,6 +3,8 @@
 A lightweight Retrieval-Augmented Generation (RAG) app built with **Flask + Gemini**.
 Upload **PDF/DOCX/TXT**, ask questions, and get answers grounded in your documents.
 
+## Demo Video:
+- https://drive.google.com/file/d/1JJTXkMbH3EqijKDFT9ogVZ3gWhSBawM_/view?usp=sharing
 ## Features
 - Upload & index multiple files (PDF/DOCX/TXT)
 - Chunking + **text-embedding-004** for retrieval
