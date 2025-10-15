@@ -1,6 +1,24 @@
-uploads/
+# Node
+node_modules/
+npm-debug.log*
+dist/
+.vercel/
+
+# Python
 __pycache__/
+*.py[cod]
 .venv/
 venv/
+
+# Secrets
 .env
+.env.*.local
+
+# App data
+uploads/
+
+# Editors/OS
+.vscode/
 .DS_Store
+.env
+.env.*.local
