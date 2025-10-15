@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unthinkable • Ask Your Files (Gemini RAG)</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🔎</span>
+      <span>Unthinkable — Ask Your Files</span>
+      <span class="pill">Gemini</span>
+    </div>
+    <div class="header-right">
+      <span id="modelTag" class="tag">Model: —</span>
+      <button id="themeBtn" class="icon-btn" title="Toggle theme">🌓</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>1) Add documents</h2>
+      <p class="muted">Upload <b>PDF</b>, <b>DOCX</b>, or <b>TXT</b>. Drag & drop or click <b>Select files</b>. Then click <b>Upload</b>.</p>
+
+      <div id="dropZone" class="dropzone" tabindex="0" role="button" aria-label="Drop files here or press Select files">
+        <div class="dz-cta">
+          <div class="dz-icon">📄</div>
+          <div class="dz-title">Drag & drop files here</div>
+          <div class="muted small">or</div>
+          <div class="row center">
+            <button id="selectBtn" class="btn">Select files</button>
+            <button id="clearSelectedBtn" class="btn secondary">Clear selection</button>
+            <input id="files" class="visually-hidden" type="file" multiple accept=".pdf,.docx,.txt" aria-hidden="true" />
+          </div>
+        </div>
+      </div>
+
+      <div id="selectedWrap" class="card subtle">
+        <div class="card-title">Selected files</div>
+        <div id="selectedList" class="filelist empty">No files selected yet.</div>
+        <form id="uploadForm" class="row push-top">
+          <button type="submit" class="btn primary">Upload & Index</button>
+          <button type="button" id="resetBtn" class="btn danger">Reset Knowledge Base</button>
+        </form>
+        <div class="progress" id="progress" hidden>
+          <div class="bar" id="progressBar" style="width:0%"></div>
+        </div>
+        <div id="uploadStatus" class="muted small"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>2) Ask questions</h2>
+      <div class="ask-grid">
+        <div class="ask-left">
+          <textarea id="question" placeholder="Example: What is the project name?"></textarea>
+          <div class="row space-between">
+            <div class="row">
+              <label class="inline">Top-K
+                <input id="topK" type="number" value="5" min="1" max="20" />
+              </label>
+              <button id="examplesBtn" class="btn secondary">Examples</button>
+            </div>
+            <button id="askBtn" class="btn primary">Ask</button>
+          </div>
+          <div id="examples" class="examples" hidden></div>
+        </div>
+        <div class="ask-right">
+          <div class="card">
+            <div class="card-title row space-between">
+              <span>Answer</span>
+              <div class="row">
+                <button id="copyBtn" class="icon-btn" title="Copy answer">📋</button>
+                <button id="clearAnsBtn" class="icon-btn" title="Clear answer">🧹</button>
+              </div>
+            </div>
+            <div id="answer" class="answer">—</div>
+            <details class="cites" id="citesBox">
+              <summary>Sources</summary>
+              <div id="citations" class="muted small"></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Status</h2>
+      <div class="status-grid">
+        <div class="stat">
+          <div class="stat-label">Chunks</div>
+          <div id="statChunks" class="stat-value">—</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Server</div>
+          <div id="statServer" class="stat-value">—</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Model</div>
+          <div id="statModel" class="stat-value">—</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <footer class="footer">
+    <span class="muted small">Built for Unthinkable • Flask • RAG • Gemini</span>
+  </footer>
+
+  <script src="/client.js"></script>
+</body>
+</html>
